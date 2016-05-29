@@ -1,0 +1,53 @@
+<!doctype html>
+<html ng-app="MyApp">
+<head>
+
+<base href="/">
+	<title>User Story</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />	
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-route.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+<!-- Services -->
+<script type="text/javascript" src="app/services/authService.js"></script>
+<script type="text/javascript" src="app/services/userService.js"></script>
+<script type="text/javascript" src="app/services/storyService.js"></script>
+
+<script type="text/javascript" src="app/filters/reverse.js"></script>
+<!-- Controllers -->
+<script type="text/javascript" src="app/controllers/mainCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/userCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/storyCtrl.js"></script>
+
+<script type="text/javascript" src="app/appRoutes.js"></script>
+<script type="text/javascript" src="app/app.js"></script>
+
+</head>
+<body ng-controller="MainController as main">
+<header>	
+	<div class="navbar navbar-default">
+		<div class="container">
+		<div class="navbar-header">
+		<a href="/" class="navbar-brand"><span class="glyphicon glyphicon-book"></span> User Tasks</a>
+		</div>
+		<!-- <ul class="nav navbar-nav">
+			<li><a href="/users">users</a></li>
+		</ul> -->
+		<ul class="nav navbar-nav navbar-right">
+			<li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
+			<li ng-if="!main.loggedIn"><a href="/signup">Signup</a></li>
+			<li ng-if="main.loggedIn"><a href="#">Hello {{main.user.username}}</a></li>
+			<li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>
+		</ul>
+		</div>
+	</div>
+</header>
+<main class="container">
+<div ng-view></div>
+</main>
+</body>
+</html>
